@@ -30,6 +30,7 @@ public class EasyProject_by_Flo : Editor
         Directory.CreateDirectory(appRoot + "/Custom assets/Textures");
         Directory.CreateDirectory(appRoot + "/Custom assets/Shaders");
         Directory.CreateDirectory(appRoot + "/Custom assets/Animations");
+        Directory.CreateDirectory(appRoot + "/Custom assets/Models");
         Directory.CreateDirectory(appRoot + "/Custom assets/Scripts");
         Directory.CreateDirectory(appRoot + "/Custom assets/Scripts/Editor");
 
