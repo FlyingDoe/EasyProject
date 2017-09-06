@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -11,9 +11,12 @@ public class EasyProject_by_Flo : Editor
     {
         createBase3DProject();
         createDefaultMats();
+        Debug.Log("Thank you for using EasyProject !");
     }
 
-
+    /// <summary>
+    /// Creates folders to organize your project. Custom Assets is used to distinguish from Standard Assets
+    /// </summary>
     [MenuItem("EasyProject/Step by step/Create empty 3D project")]
     static void createBase3DProject()
     {
@@ -26,6 +29,7 @@ public class EasyProject_by_Flo : Editor
         Directory.CreateDirectory(appRoot + "/Custom assets/Prefabs");
         Directory.CreateDirectory(appRoot + "/Custom assets/Textures");
         Directory.CreateDirectory(appRoot + "/Custom assets/Shaders");
+        Directory.CreateDirectory(appRoot + "/Custom assets/Animations");
         Directory.CreateDirectory(appRoot + "/Custom assets/Scripts");
         Directory.CreateDirectory(appRoot + "/Custom assets/Scripts/Editor");
 
@@ -34,29 +38,32 @@ public class EasyProject_by_Flo : Editor
         Debug.Log("Created Directories and moved EasyProject script.");
     }
 
+    /// <summary>
+    /// Creates materials using the stadard shader, for red, green, blue, black, white and metal.
+    /// </summary>
     [MenuItem("EasyProject/Step by step/Create default materials")]
     static void createDefaultMats()
     {
+        // base colors
         Material matR = new Material(Shader.Find("Standard"));
         matR.color = Color.red;
         AssetDatabase.CreateAsset(matR, "Assets/Custom assets/Materials/Default/red_default.mat");
-
         Material matB = new Material(Shader.Find("Standard"));
         matB.color = Color.blue;
         AssetDatabase.CreateAsset(matB, "Assets/Custom assets/Materials/Default/blue_default.mat");
-
         Material matG = new Material(Shader.Find("Standard"));
         matG.color = Color.green;
         AssetDatabase.CreateAsset(matG, "Assets/Custom assets/Materials/Default/green_default.mat");
-
+        
+        // black and white
         Material matW = new Material(Shader.Find("Standard"));
         matW.color = Color.white;
         AssetDatabase.CreateAsset(matW, "Assets/Custom assets/Materials/Default/white_default.mat");
-
         Material matBc = new Material(Shader.Find("Standard"));
         matBc.color = Color.black;
         AssetDatabase.CreateAsset(matBc, "Assets/Custom assets/Materials/Default/black_default.mat");
-
+        
+        // simple metal
         Material matMetal = new Material(Shader.Find("Standard"));
         matMetal.color = new Color(0.8f, 0.8f, 0.9f);
         matMetal.SetFloat("_Metallic", 1);
